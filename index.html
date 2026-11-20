@@ -4,44 +4,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Tadka | Digital Menu</title>
+<title>Urban Tadka | Premium Digital Menu</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f7f5f0;color:#29251f;font-family:Arial,sans-serif}
-header{background:#24170f;color:white;text-align:center;padding:28px 15px}
-header h1{font-size:29px;margin:5px;color:#e9bd75}
-header p{color:#ddd;margin:8px}
-.tag{color:#e9bd75;font-size:12px;letter-spacing:3px}
-.container{padding:16px;max-width:650px;margin:auto}
-h2{font-size:21px}
-.categories{display:flex;gap:9px;overflow-x:auto;padding:5px 0 15px}
-.categories button{border:1px solid #d7c5a7;background:white;padding:10px 15px;border-radius:25px;white-space:nowrap}
-.categories button.active{background:#392418;color:white}
-.food{background:white;border-radius:15px;margin:13px 0;padding:12px;display:flex;gap:13px;align-items:center;box-shadow:0 2px 9px #0000000c}
-.food img{width:105px;height:100px;object-fit:cover;border-radius:12px}
-.info{flex:1;min-width:0}
-.info h3{margin:3px 0 7px;font-size:16px}
-.info p{margin:0 0 9px;color:#887b6c;font-size:12px}
-.price{font-weight:bold;color:#a56a26}
-.add{background:#38251a;color:white;border:0;border-radius:8px;padding:9px 14px;margin-top:9px}
-.cart{background:#fff;border-radius:15px;padding:16px;margin:25px 0;box-shadow:0 2px 10px #00000012}
-.cart-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #eee}
-.qty button{border:0;background:#eee;padding:6px 10px;border-radius:5px}
+body{margin:0;background:#101010;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;padding:35px 15px;background:linear-gradient(145deg,#24201a,#090909);border-bottom:1px solid #b99448}
+.tag{color:#d9b86c;letter-spacing:4px;font-size:11px}
+h1{font-family:Georgia,serif;color:#e5c477;font-size:36px;margin:12px 0}
+header p{color:#ccc;margin:8px}
+.gold{color:#e5c477}
+.container{max-width:850px;margin:auto;padding:20px 15px}
+h2{font-family:Georgia,serif;color:#e5c477;font-size:23px}
+.categories{display:flex;gap:9px;overflow-x:auto;padding:10px 0 18px}
+.categories button{white-space:nowrap;background:#222;color:#eee;border:1px solid #555;padding:11px 18px;border-radius:25px}
+.categories button.active{background:#d2ad5c;color:#111;border-color:#d2ad5c}
+.food-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.food{background:#1d1d1d;border:1px solid #39332a;border-radius:14px;overflow:hidden}
+.food img{width:100%;height:135px;object-fit:cover}
+.info{padding:12px}
+.info h3{font-size:15px;margin:0 0 8px}
+.info p{font-size:12px;color:#aaa;margin:0 0 12px}
+.price{color:#e5c477;font-weight:bold;font-size:16px}
+.add{background:#d2ad5c;border:0;color:#111;border-radius:7px;padding:9px 12px;font-weight:bold}
+.food-bottom{display:flex;align-items:center;justify-content:space-between;gap:5px}
+.cart{background:#1d1d1d;border:1px solid #665333;border-radius:14px;padding:17px;margin-top:25px}
+.cart-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #393939;font-size:14px}
 .total{display:flex;justify-content:space-between;font-size:20px;font-weight:bold;margin-top:18px}
-.clear{background:#eee;border:0;padding:10px;border-radius:8px;margin-top:15px}
-footer{text-align:center;color:#887b6c;padding:25px;font-size:12px}
+.clear{background:transparent;color:#e5c477;border:1px solid #a98a4a;padding:10px 15px;border-radius:7px;margin-top:15px}
+footer{text-align:center;padding:25px;color:#999;font-size:12px}
+@media(max-width:380px){.food-grid{grid-template-columns:1fr}h1{font-size:30px}}
 </style>
 </head>
 <body>
+
 <header>
 <div class="tag">WELCOME TO</div>
 <h1>URBAN TADKA</h1>
 <p>Authentic Taste • Fresh Food</p>
-<div>✦ DIGITAL MENU ✦</div>
+<div class="gold">✦ PREMIUM DIGITAL MENU ✦</div>
 </header>
 
 <main class="container">
-<h2>Explore Our Menu 🍽️</h2>
+<h2>Explore Our Menu</h2>
+<p style="color:#aaa;font-size:13px">Discover delicious food made with love.</p>
+
 <div class="categories" id="categories">
 <button class="active" onclick="filterMenu('All',this)">All</button>
 <button onclick="filterMenu('Indian',this)">Indian</button>
@@ -50,54 +56,84 @@ footer{text-align:center;color:#887b6c;padding:25px;font-size:12px}
 <button onclick="filterMenu('Drinks',this)">Drinks</button>
 </div>
 
-<div id="menu"></div>
+<div class="food-grid" id="menu"></div>
 
 <section class="cart">
-<h2>🛒 My Cart</h2>
-<div id="cartItems">Your cart is empty.</div>
+<h2>🛒 Your Order Summary</h2>
+<div id="cartItems" style="color:#aaa">Your cart is empty.</div>
 <div class="total">
 <span>Total Bill</span>
-<span id="total">₹0</span>
+<span id="total" class="gold">₹0</span>
 </div>
 <button class="clear" onclick="clearCart()">Clear Cart</button>
 </section>
 </main>
 
-<footer>Thank you for visiting URBAN TADKA ❤️<br>Demo Digital Menu</footer>
+<footer>
+Thank you for visiting URBAN TADKA ❤️
+<br><br>Premium Digital Menu Demo
+</footer>
 
 <script>
 const foods=[
-{name:"Paneer Tikka",cat:"Indian",price:220,emoji:"🧀",img:"https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400"},
-{name:"Veg Biryani",cat:"Indian",price:180,emoji:"🍛",img:"https://images.unsplash.com/photo-1563379091339-03246963d96c?w=400"},
-{name:"Butter Naan",cat:"Indian",price:45,emoji:"🫓",img:"https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400"},
-{name:"Veg Manchurian",cat:"Chinese",price:160,emoji:"🥘",img:"https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400"},
-{name:"Cheese Pizza",cat:"Pizza",price:250,emoji:"🍕",img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400"},
-{name:"Cold Coffee",cat:"Drinks",price:110,emoji:"🥤",img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400"}
+{name:"Paneer Tikka",cat:"Indian",price:220,emoji:"🍢",img:"https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8"},
+{name:"Veg Biryani",cat:"Indian",price:180,emoji:"🍛",img:"https://images.unsplash.com/photo-1589302168068-964664d93dc0"},
+{name:"Butter Naan",cat:"Indian",price:45,emoji:"🫓",img:"https://images.unsplash.com/photo-1601050690597-df0568f70950"},
+{name:"Veg Manchurian",cat:"Chinese",price:160,emoji:"🥘",img:"https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec"},
+{name:"Cheese Pizza",cat:"Pizza",price:250,emoji:"🍕",img:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47"},
+{name:"Cold Coffee",cat:"Drinks",price:110,emoji:"🥤",img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735"}
 ];
+
 let cart={};
 
 function renderMenu(category="All"){
-document.getElementById("menu").innerHTML=foods
-.filter(f=>category==="All"||f.cat===category)
-.map(f=>`
-<div class="food">
-<img src="${f.img}" alt="${f.name}" onerror="this.style.display='none'">
-<div class="info">
-<h3>${f.emoji} ${f.name}</h3>
-<p>${f.cat}</p>
-<div class="price">₹${f.price}</div>
-<button class="add" onclick="addItem('${f.name}')">+ Add</button>
-</div>
-</div>`).join("");
+const menu=document.getElementById("menu");
+menu.innerHTML="";
+foods.filter(f=>category==="All"||f.cat===category).forEach((f)=>{
+const card=document.createElement("div");
+card.className="food";
+
+const img=document.createElement("img");
+img.src=f.img;
+img.alt=f.name;
+img.loading="lazy";
+img.onerror=function(){this.style.display="none"};
+
+const info=document.createElement("div");
+info.className="info";
+
+const name=document.createElement("h3");
+name.textContent=f.emoji+" "+f.name;
+
+const desc=document.createElement("p");
+desc.textContent=f.cat+" • Fresh & Delicious";
+
+const bottom=document.createElement("div");
+bottom.className="food-bottom";
+
+const price=document.createElement("span");
+price.className="price";
+price.textContent="₹"+f.price;
+
+const add=document.createElement("button");
+add.className="add";
+add.textContent="ADD +";
+add.onclick=()=>addToCart(f.name);
+
+bottom.append(price,add);
+info.append(name,desc,bottom);
+card.append(img,info);
+menu.append(card);
+});
 }
 
-function filterMenu(category,btn){
+function filterMenu(category,button){
 document.querySelectorAll(".categories button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
+button.classList.add("active");
 renderMenu(category);
 }
 
-function addItem(name){
+function addToCart(name){
 cart[name]=(cart[name]||0)+1;
 renderCart();
 }
@@ -109,21 +145,45 @@ renderCart();
 }
 
 function renderCart(){
-let items=Object.entries(cart);
-let html=items.map(([name,qty])=>{
-let food=foods.find(f=>f.name===name);
-return `<div class="cart-row">
-<div>${name}<br><small>₹${food.price} × ${qty}</small></div>
-<div class="qty">
-<button onclick="changeQty('${name}',-1)">−</button>
-${qty}
-<button onclick="changeQty('${name}',1)">+</button>
-</div>
-<strong>₹${food.price*qty}</strong>
-</div>`;
-}).join("");
-document.getElementById("cartItems").innerHTML=html||"Your cart is empty.";
-let total=items.reduce((sum,[name,qty])=>sum+foods.find(f=>f.name===name).price*qty,0);
+const box=document.getElementById("cartItems");
+let total=0;
+box.innerHTML="";
+const items=Object.keys(cart);
+
+if(items.length===0){
+box.textContent="Your cart is empty.";
+}else{
+items.forEach(name=>{
+const food=foods.find(f=>f.name===name);
+const subtotal=food.price*cart[name];
+total+=subtotal;
+
+const row=document.createElement("div");
+row.className="cart-row";
+
+const label=document.createElement("span");
+label.textContent=name+" × "+cart[name];
+
+const controls=document.createElement("span");
+const minus=document.createElement("button");
+minus.textContent="−";
+minus.onclick=()=>changeQty(name,-1);
+const plus=document.createElement("button");
+plus.textContent="+";
+plus.onclick=()=>changeQty(name,1);
+
+[minus,plus].forEach(b=>{
+b.style.cssText="background:#d2ad5c;border:0;border-radius:4px;padding:5px 10px;margin:0 3px";
+});
+
+const amount=document.createElement("span");
+amount.textContent="₹"+subtotal;
+
+controls.append(minus,plus,amount);
+row.append(label,controls);
+box.append(row);
+});
+}
 document.getElementById("total").textContent="₹"+total;
 }
 
